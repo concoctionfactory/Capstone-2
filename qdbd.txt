@@ -1,0 +1,67 @@
+# Modify this code to update the DB schema diagram.
+# To reset the sample schema, replace everything with
+# two dots ('..' - without quotes).
+
+User
+-
+Id PK int
+Name string INDEX
+Password string
+Email NULL string
+
+
+Board
+-
+Id  PK int
+Name string
+
+BoardMemeber
+-
+BoardId  int FK >- Board.Id
+UserId   int FK >- User.Id
+IsManager bool
+
+BoardActivity
+-
+BoardId  int FK >- Board.Id
+UserId  int FK >- User.Id
+action String
+
+
+List
+-
+Id  PK int
+Name string
+BoardId int FK >- Board.Id
+
+ListMemeber
+-
+ListId  int FK >- List.Id
+UserId int FK >- User.Id
+
+ListActivity
+-
+ListId  int FK >- List.Id
+UserId int FK >- User.Id
+action String
+
+
+Card
+-
+Id  PK int
+Name string
+DueDate int
+IsDone bool
+ListId int FK >- List.Id
+
+CardMemeber
+-
+CardId  int FK >- Card.Id
+UserId int FK >- User.Id
+
+
+CardActivity
+-
+CardId int FK >- Card.Id
+UserId int FK >- User.Id
+action String
