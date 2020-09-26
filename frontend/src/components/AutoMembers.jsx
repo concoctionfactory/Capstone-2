@@ -7,7 +7,6 @@ import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 
 export default function FixedTags({ board, addMembers }) {
-  console.log("AUTOMEMBERS");
   const user = useSelector((state) => state.users);
   const allMembers = useSelector((state) => state.members);
   const dispatch = useDispatch();
@@ -56,7 +55,6 @@ export default function FixedTags({ board, addMembers }) {
     let allMembersUsernames = allMembers.map((am) => am.username);
     let idx = allMembersUsernames.indexOf(user.username);
     let currAdmin = allMembers[idx];
-    console.log(idx, currAdmin);
     fixedOptions = [currAdmin];
   }
 

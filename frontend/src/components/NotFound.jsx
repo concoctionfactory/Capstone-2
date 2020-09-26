@@ -47,7 +47,7 @@ function NotFound() {
   useEffect(() => {
     const timer = setTimeout(() => setText(main), 200);
     return () => clearTimeout(timer);
-  }, []);
+  }, [main]);
   return text;
 }
 

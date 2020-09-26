@@ -77,7 +77,6 @@ function TaskForm({
       ...data,
       status: newStatus,
     }));
-    console.log(formData);
   };
 
   const handleDateChange = (date) => {

@@ -33,7 +33,6 @@ function getBoard(board) {
 }
 
 export function addBoardAPI(data) {
-  console.log(data);
   let boardData = { ...data };
   // delete boardData.members;
   return async function (dispatch) {

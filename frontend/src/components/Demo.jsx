@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink as RouterLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { loginUserAPI } from "../actions/users";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -26,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
 function Demo() {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const history = useHistory();
 
   async function handleLogin(e) {
     e.preventDefault();
@@ -88,7 +86,7 @@ function Demo() {
   useEffect(() => {
     const timer = setTimeout(() => setText(main), 200);
     return () => clearTimeout(timer);
-  }, []);
+  }, [main]);
   return text;
 }
 

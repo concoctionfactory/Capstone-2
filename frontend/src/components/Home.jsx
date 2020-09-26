@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
 
 import clsx from "clsx";
 import BoardForm from "./BoardForm";
@@ -66,7 +65,6 @@ function Home() {
       );
       let memberRes = new Set(members);
       memberLen = memberRes.size;
-      console.log(memberRes);
     }
     return (
       <React.Fragment>
@@ -85,7 +83,6 @@ function Home() {
     if (userData.boards) {
       let boards = Object.values(userData.boards).map((b) => b.name);
       boardLen = boards.length;
-      console.log(boards);
     }
     return (
       <React.Fragment>

@@ -75,7 +75,6 @@ function UserForm() {
 
   function validate() {
     const result = Joi.validate(formData, schema, { abortEarly: false });
-    console.log(result);
     if (!result.error) return null;
     const errors = {};
     for (let item of result.error.details) errors[item.path[0]] = item.message;
@@ -105,7 +104,6 @@ function UserForm() {
     e.preventDefault();
 
     const errors = validate();
-    console.log(errors);
     setFormErrors(errors);
 
     if (errors) return;

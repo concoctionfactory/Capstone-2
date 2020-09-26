@@ -127,7 +127,6 @@ function Boards() {
     }
   }
   let boardData = board || {};
-  console.log(board);
 
   if (!user.username) return <Demo />;
   if (!board) return <NotFound />;

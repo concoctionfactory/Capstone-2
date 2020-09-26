@@ -12,7 +12,6 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import AutoMembers from "./AutoMembers";
 
 function BoardFrom({ isOpen, handleOpen, handleClose, username, board }) {
-  console.log("BOARDFORM");
   const dispatch = useDispatch();
   let initalFormState;
   if (board) {
@@ -55,13 +54,11 @@ function BoardFrom({ isOpen, handleOpen, handleClose, username, board }) {
   function handleEdit() {
     let data = formData;
     data.id = board.id;
-    console.log(data, initalFormState);
     // let currMembers = board.members.map((b) => b.username);
     // let newMembers = data.members;
 
     // let remove = currMembers.filter((cm) => !newMembers.includes(cm));
     // let add = newMembers.filter((nm) => !currMembers.includes(nm));
-    // console.log("ADD", add, "REMOVE", remove);
     dispatch(updateBoardAPI(data));
 
     setFormData(initalFormState);
