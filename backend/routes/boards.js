@@ -3,7 +3,7 @@
 const Board = require("../models/board");
 const express = require("express");
 const router = new express.Router();
-const ExpressError = require("../helpers/expressError");
+const ExpressError = require("../helpers/ExpressError");
 const { validate } = require("jsonschema");
 const { boardSchema } = require("../schemas");
 

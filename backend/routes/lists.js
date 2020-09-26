@@ -3,7 +3,7 @@
 const List = require("../models/list");
 const express = require("express");
 const router = new express.Router();
-const ExpressError = require("../helpers/expressError");
+const ExpressError = require("../helpers/ExpressError");
 const { validate } = require("jsonschema");
 const { listSchema, listUpdateSchema } = require("../schemas");
 

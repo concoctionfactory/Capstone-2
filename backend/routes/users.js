@@ -2,7 +2,7 @@
 
 const express = require("express");
 const router = new express.Router();
-const ExpressError = require("../helpers/expressError");
+const ExpressError = require("../helpers/ExpressError");
 
 const { ensureCorrectUser, authRequired } = require("../middleware/auth");
 const User = require("../models/user");
