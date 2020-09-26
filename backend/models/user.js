@@ -17,23 +17,26 @@ class User {
               password, 
               first_name, 
               last_name, 
-              email, 
+              email 
         FROM users 
         WHERE username = $1`,
       [data.username]
     );
 
     const user = result.rows[0];
+    data.password = data.password.toString();
+    user.password = user.password.toString();
 
     if (user) {
       // compare hashed password to a new hash from password
       const isValid = await bcrypt.compare(data.password, user.password);
+      console.log(isValid, data.password, user.password);
       if (isValid) {
         return user;
       }
     }
 
-    throw ExpressError("Invalid Password", 401);
+    throw new ExpressError("Invalid Password", 401);
   }
 
   /** Register user with data. Returns new user data. */
@@ -54,6 +57,7 @@ class User {
     }
 
     const hashedPassword = await bcrypt.hash(data.password, BCRYPT_WORK_FACTOR);
+    console.log(hashedPassword);
 
     const result = await db.query(
       `INSERT INTO users 
@@ -88,7 +92,7 @@ class User {
 
   static async findOne(username) {
     const userRes = await db.query(
-      `SELECT username, first_name, last_name
+      `SELECT username, first_name, last_name, email
         FROM users 
         WHERE username = $1`,
       [username]
@@ -98,6 +102,33 @@ class User {
 
     if (!user) {
       throw new ExpressError(`There exists no user '${username}'`, 404);
+    }
+    const boardRes = await db.query(
+      `SELECT b.id, b.name, bm.is_admin
+            FROM boardMembers bm JOIN boards b ON bm.board_id = b.id 
+            WHERE bm.username = $1`,
+      [username]
+    );
+    user.boards = boardRes.rows;
+    if (boardRes.rows.length > 0) {
+      let res = await Promise.all(
+        boardRes.rows.map((b) => {
+          async function members() {
+            const membersRes = await db.query(
+              `SELECT  username, is_admin
+                FROM boardMembers
+                WHERE board_id = $1`,
+              [b.id]
+            );
+
+            b.members = membersRes.rows;
+            return b;
+          }
+          return members();
+        })
+      );
+
+      user.boards = res;
     }
 
     return user;

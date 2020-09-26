@@ -51,7 +51,7 @@ class List {
       `INSERT INTO lists 
               (name, board_id)
             VALUES ($1, $2) 
-            RETURNING  name, id`,
+            RETURNING  id, name, board_id`,
       [data.name, data.board_id]
     );
 
@@ -72,7 +72,7 @@ class List {
 
     const result = await db.query(query, values);
     const list = result.rows[0];
-
+    console.log("UPDATE", list);
     if (!list) {
       throw new ExpressError(`There exists no list '${id}`, 404);
     }
@@ -86,13 +86,14 @@ class List {
     const result = await db.query(
       `DELETE FROM lists 
           WHERE id = $1 
-          RETURNING name`,
+          RETURNING id, name, board_id`,
       [id]
     );
 
     if (result.rows.length === 0) {
       throw new ExpressError(`There exists no lists '${id}`, 404);
     }
+    return result.rows[0];
   }
 }
 

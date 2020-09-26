@@ -1,5 +1,8 @@
-const app = require("./app");
+/** Start server for jobly. */
 
-app.listen(3000, () => {
-  console.log(`Server starting on port 3000`);
+const app = require("./app");
+const { PORT } = require("./config");
+
+app.listen(PORT, function () {
+  console.log(`Server starting on port ${PORT}!`);
 });

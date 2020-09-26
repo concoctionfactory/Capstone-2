@@ -65,14 +65,14 @@ router.patch("/:id", async function (req, res, next) {
     //     400
     //   );
     // }
-
-    const validation = validate(req.body, boardSchema);
-    if (!validation.valid) {
-      throw new ExpressError(
-        validation.errors.map((e) => e.stack),
-        400
-      );
-    }
+    // const validation = validate(req.body, boardSchema);
+    // if (!validation.valid) {
+    //   throw new ExpressError(
+    //     validation.errors.map((e) => e.stack),
+    //     400
+    //   );
+    // }
+    console.log("REQ", req.body, req.params.id);
 
     const board = await Board.update(req.params.id, req.body);
     return res.json({ board });
@@ -85,8 +85,8 @@ router.patch("/:id", async function (req, res, next) {
 
 router.delete("/:id", async function (req, res, next) {
   try {
-    await Board.remove(req.params.id);
-    return res.json({ message: "board deleted" });
+    const board = await Board.remove(req.params.id);
+    return res.json({ board });
   } catch (err) {
     return next(err);
   }

@@ -39,16 +39,7 @@
       "maxLength": 55,
       "examples": ["Hueter"]
     },
-    "photo_url": {
-      "$id": "/properties/photo",
-      "type": "string",
-      "title": "The Photo Schema ",
-      "format": "uri",
-      "default": "",
-      "examples": [
-        "https://avatars0.githubusercontent.com/u/13444851?s=460&v=4"
-      ]
-    },
+
     "email": {
       "$id": "/properties/email",
       "type": "string",
@@ -56,8 +47,8 @@
       "maxLength": 60,
       "title": "The Email Schema ",
       "default": "",
-      "examples": ["michael@rithmschool.com"]
+      "examples": ["michael@mail.com"]
     }
   },
-  "required": ["username", "password", "email"]
+  "required": ["username", "password"]
 }

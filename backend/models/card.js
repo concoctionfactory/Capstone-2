@@ -9,7 +9,7 @@ class Card {
 
   static async getAll(data) {
     const result = await db.query(
-      `SELECT id, name, due_date, is_done
+      `SELECT  id, name, text, due_Date, status, list_id
           FROM cards`
     );
 
@@ -20,7 +20,7 @@ class Card {
 
   static async getOne(id) {
     const CardRes = await db.query(
-      `SELECT  id, name, due_date, is_done
+      `SELECT  id, name, text, due_Date, status, list_id
             FROM cards
             WHERE id = $1`,
       [id]
@@ -40,10 +40,10 @@ class Card {
   static async create(data) {
     const result = await db.query(
       `INSERT INTO cards 
-              (name, list_id, due_date)
-            VALUES ($1, $2, $3) 
-            RETURNING  name, id, due_Date, is_done`,
-      [data.name, data.list_id, data.due_date]
+              (name, list_id, due_date, text, status)
+            VALUES ($1, $2, $3, $4, $5 ) 
+            RETURNING id, name, text, due_Date, status, list_id`,
+      [data.name, data.list_id, data.due_date, data.text, data.status]
     );
 
     return result.rows[0];
@@ -77,13 +77,14 @@ class Card {
     const result = await db.query(
       `DELETE FROM cards 
           WHERE id = $1 
-          RETURNING name`,
+          RETURNING name, id, list_id`,
       [id]
     );
 
     if (result.rows.length === 0) {
       throw new ExpressError(`There exists no card '${id}`, 404);
     }
+    return result.rows[0];
   }
 }
 

@@ -86,8 +86,8 @@ router.patch("/:id", async function (req, res, next) {
 
 router.delete("/:id", async function (req, res, next) {
   try {
-    await Card.remove(req.params.id);
-    return res.json({ message: "card deleted" });
+    let card = await Card.remove(req.params.id);
+    return res.json({ card });
   } catch (err) {
     return next(err);
   }

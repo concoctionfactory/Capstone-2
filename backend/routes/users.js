@@ -1,9 +1,14 @@
 /** User related routes. */
 
-const User = require("../models/user");
 const express = require("express");
 const router = new express.Router();
 const ExpressError = require("../helpers/expressError");
+
+const { ensureCorrectUser, authRequired } = require("../middleware/auth");
+const User = require("../models/user");
+const { validate } = require("jsonschema");
+const { userNewSchema, userUpdateSchema } = require("../schemas");
+const createToken = require("../helpers/createToken");
 
 /** GET /
  *
@@ -16,7 +21,7 @@ const ExpressError = require("../helpers/expressError");
 
 router.get("/", async function (req, res, next) {
   try {
-    let users = await User.getAll();
+    let users = await User.findAll();
     //Fixes BUG #1
     users = users.map((u) => ({
       username: u.username,
@@ -52,7 +57,6 @@ router.post("/", async function (req, res, next) {
         400
       );
     }
-
     const newUser = await User.register(req.body);
     const token = createToken(newUser);
     return res.status(201).json({ token });

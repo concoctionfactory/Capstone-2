@@ -1,18 +1,23 @@
 const express = require("express");
-const app = express();
+const cors = require("cors");
 const ExpressError = require("./helpers/expressError");
 
-app.use(express.json());
-
+const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users");
 const boardRoutes = require("./routes/boards");
 const listRoutes = require("./routes/lists");
 const cardRoutes = require("./routes/cards");
 
-app.use("/users", userRoutes);
-app.use("/boards", boardRoutes);
-app.use("/lists", listRoutes);
-app.use("/cards", cardRoutes);
+const app = express();
+
+app.use(express.json());
+app.use(cors());
+
+app.use("/api/auth", authRoutes);
+app.use("/api/users", userRoutes);
+app.use("/api/boards", boardRoutes);
+app.use("/api/lists", listRoutes);
+app.use("/api/cards", cardRoutes);
 
 /** 404 handler */
 
