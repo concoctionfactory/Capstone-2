@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const ExpressError = require("./helpers/expressError");
+const ExpressError = require("./helpers/ExpressError");
 
 const authRoutes = require("./routes/auth");
 const userRoutes = require("./routes/users");
