@@ -43,7 +43,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const schema = Joi.object().keys({
-  username: Joi.string().alphanum().min(5).max(30).required(),
+  username: Joi.string().min(5).max(30).required(),
+  first_name: Joi.string(),
+  last_name: Joi.string(),
   email: Joi.string()
     .min(6)
     .email({
@@ -105,7 +107,7 @@ function UserForm() {
 
     const errors = validate();
     setFormErrors(errors);
-
+    console.log(errors);
     if (errors) return;
     await dispatch(signUpUserAPI(formData));
     history.push("/");
@@ -154,8 +156,8 @@ function UserForm() {
             autoFocus
             onChange={handleChange}
             value={formData.email}
-            error={formErrors.email}
-            helperText={formErrors.email}
+            error={formErrors && formErrors.email}
+            helperText={formErrors && formErrors.email}
           />
           {!user.username && (
             <TextField
@@ -169,8 +171,8 @@ function UserForm() {
               autoFocus
               onChange={handleChange}
               value={formData.username}
-              error={formErrors.username}
-              helperText={formErrors.username}
+              error={formErrors && formErrors.username}
+              helperText={formErrors && formErrors.username}
             />
           )}
           <TextField
@@ -184,8 +186,8 @@ function UserForm() {
             id="password"
             onChange={handleChange}
             value={formData.password}
-            error={formErrors.password}
-            helperText={formErrors.password}
+            error={formErrors && formErrors.password}
+            helperText={formErrors && formErrors.password}
           />
           {user.username && (
             <Button
