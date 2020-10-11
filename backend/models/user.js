@@ -11,6 +11,7 @@ class User {
   /** authenticate user with username, password. Returns user or throws err. */
 
   static async authenticate(data) {
+    // console.log(data);
     // try to find the user first
     const result = await db.query(
       `SELECT username, 
@@ -24,13 +25,14 @@ class User {
     );
 
     const user = result.rows[0];
+    // console.log(user);
     data.password = data.password.toString();
     user.password = user.password.toString();
 
     if (user) {
       // compare hashed password to a new hash from password
       const isValid = await bcrypt.compare(data.password, user.password);
-      console.log(isValid, data.password, user.password);
+      // console.log(isValid, data.password, user.password);
       if (isValid) {
         return user;
       }
@@ -91,6 +93,8 @@ class User {
   /** Given a username, return data about user. */
 
   static async findOne(username) {
+    console.log(username);
+
     const userRes = await db.query(
       `SELECT username, first_name, last_name, email
         FROM users 
@@ -99,7 +103,6 @@ class User {
     );
 
     const user = userRes.rows[0];
-
     if (!user) {
       throw new ExpressError(`There exists no user '${username}'`, 404);
     }
@@ -144,9 +147,13 @@ class User {
    */
 
   static async update(username, data) {
-    if (data.password) {
-      data.password = await bcrypt.hash(data.password, BCRYPT_WORK_FACTOR);
+    try {
+      await this.authenticate({ ...data, username });
+    } catch (error) {
+      console.log("error");
+      throw new ExpressError("Invalid Password", 401);
     }
+    delete data.password;
 
     let { query, values } = partialUpdate("users", data, "username", username);
 

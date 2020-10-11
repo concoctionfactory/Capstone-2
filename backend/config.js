@@ -14,7 +14,7 @@ const BCRYPT_WORK_FACTOR = 10;
 let DB_URI;
 
 if (process.env.NODE_ENV === "test") {
-  DB_URI = "workflow-test";
+  DB_URI = "workflow_test";
 } else {
   DB_URI = process.env.DATABASE_URL || "workflow";
 }

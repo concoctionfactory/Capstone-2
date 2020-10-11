@@ -47,8 +47,10 @@ router.post("/", async function (req, res, next) {
         400
       );
     }
+    console.log(validation.valid);
 
     const board = await Board.create(req.body);
+
     return res.status(201).json({ board });
   } catch (err) {
     return next(err);

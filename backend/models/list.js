@@ -68,6 +68,8 @@ class List {
    */
 
   static async update(id, data) {
+    console.log(data);
+
     let { query, values } = sqlForPartialUpdate("lists", data, "id", id);
 
     const result = await db.query(query, values);

@@ -72,6 +72,7 @@ class Board {
   }
 
   /** Create a board (from data), update db, return new board data. */
+  /// have to include username of members
 
   static async create(data) {
     const result = await db.query(
@@ -96,6 +97,7 @@ class Board {
 
     let membersResults = await Promise.all(membersPromises);
     board.members = membersResults.map((mr) => mr.rows[0]);
+    console.log(board);
 
     return board;
   }
@@ -137,51 +139,46 @@ class Board {
       [id]
     );
 
-    let currMembers = membersRes.rows.map((m) => m.username);
-    let newMembers = data.members;
-    console.log("B3", currMembers);
+    if (data.members) {
+      let currMembers = membersRes.rows.map((m) => m.username);
+      let newMembers = data.members;
+      console.log("B3", currMembers, newMembers);
 
-    let remove = currMembers.filter((cm) => !newMembers.includes(cm));
-    let add = newMembers.filter((nm) => !currMembers.includes(nm));
-    console.log("ADD", add, "REMOVE", remove);
+      let remove = currMembers.filter((cm) => !newMembers.includes(cm));
+      console.log("remove", remove);
+      let add = newMembers.filter((nm) => !currMembers.includes(nm));
+      console.log("ADD", add, "REMOVE", remove);
 
-    if (add.length > 0) {
-      console.log("ADDING");
+      if (add.length > 0) {
+        console.log("ADDING");
 
-      let membersPromises = add.map((m) => {
-        console.log(m, board.id);
-        return db.query(
-          `INSERT INTO boardMembers
-          (board_id, username, is_admin)
-          VALUES ($1, $2, $3) 
-          RETURNING username, is_admin`,
-          [board.id, m, m === data.username]
-        );
-      });
-      await Promise.all(membersPromises);
+        let membersPromises = add.map((m) => {
+          console.log(m, board.id);
+          return db.query(
+            `INSERT INTO boardMembers
+            (board_id, username, is_admin)
+            VALUES ($1, $2, $3) 
+            RETURNING username, is_admin`,
+            [board.id, m, m === data.username]
+          );
+        });
+        await Promise.all(membersPromises);
+      }
+
+      if (remove.length > 0) {
+        console.log("REMOVING");
+        let membersPromises = remove.map((m) => {
+          console.log(m, board.id);
+          return db.query(
+            `DELETE FROM boardMembers
+            WHERE username = $1 AND  board_id = $2 `,
+            [m, board.id]
+          );
+        });
+        await Promise.all(membersPromises);
+      }
     }
 
-    if (remove.length > 0) {
-      console.log("REMOVING");
-      let membersPromises = remove.map((m) => {
-        console.log(m, board.id);
-        return db.query(
-          `DELETE FROM boardMembers
-          WHERE username = $1 AND  board_id = $2 `,
-          [m, board.id]
-        );
-      });
-      await Promise.all(membersPromises);
-    }
-    // const newMembersRes = await db.query(
-    //   `SELECT username, is_admin
-    //   FROM boardMembers
-    //   WHERE board_id= $1`,
-    //   [id]
-    // );
-    // board.members = newMembersRes.rows;
-    // console.log(board.members);
-    // return board;
     return this.getOne(board.id);
   }
 

@@ -22,7 +22,6 @@ const createToken = require("../helpers/createToken");
 router.get("/", async function (req, res, next) {
   try {
     let users = await User.findAll();
-    //Fixes BUG #1
     users = users.map((u) => ({
       username: u.username,
       first_name: u.first_name,
@@ -68,15 +67,14 @@ router.post("/", async function (req, res, next) {
 /** PATCH /[handle] {userData} => {user: updatedUser} */
 
 router.patch("/:username", async function (req, res, next) {
+  console.log("UPDATE");
   try {
-    if ("username" in req.body || "is_admin" in req.body) {
-      throw new ExpressError(
-        "You are not allowed to change username or is_admin properties.",
-        400
-      );
+    if ("username" in req.body) {
+      throw new ExpressError("You are not allowed to change username", 400);
     }
 
     const validation = validate(req.body, userUpdateSchema);
+    console.log(validation.valid);
     if (!validation.valid) {
       throw new ExpressError(
         validation.errors.map((e) => e.stack),

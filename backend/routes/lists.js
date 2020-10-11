@@ -58,8 +58,6 @@ router.post("/", async function (req, res, next) {
 /** PATCH /[id] {listData} => {list: updatedList} */
 
 router.patch("/:id", async function (req, res, next) {
-  console.log(req.body);
-
   try {
     // if ("username" in req.body || "is_admin" in req.body) {
     //   throw new ExpressError(
@@ -69,13 +67,14 @@ router.patch("/:id", async function (req, res, next) {
     // }
 
     const validation = validate(req.body, listSchema);
+    console.log(req.body, validation.valid);
+
     if (!validation.valid) {
       throw new ExpressError(
         validation.errors.map((e) => e.stack),
         400
       );
     }
-
     const list = await List.update(req.params.id, req.body);
     return res.json({ list });
   } catch (err) {
