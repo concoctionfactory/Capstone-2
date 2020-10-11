@@ -1,5 +1,12 @@
 import axios from "axios";
-import { FETCH_USER, SIGNOUT, LOGIN, FETCH_ALL_MEMBERS } from "./types";
+import {
+  FETCH_USER,
+  SIGNOUT,
+  LOGIN,
+  FETCH_ALL_MEMBERS,
+  LOADING_USER,
+  ERROR_USER,
+} from "./types";
 
 const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
 
@@ -19,8 +26,19 @@ function getMembers(users) {
 
 export function getUserAPI(id) {
   return async function (dispatch) {
+    dispatch(loadingUser());
+    let jwt = JSON.parse(window.localStorage.getItem("_token"));
+    console.log(id, jwt);
+
     const response = await axios.get(`${API_URL}/users/${id}`);
+
     return dispatch(getUser(response.data.user));
+  };
+}
+
+function loadingUser() {
+  return {
+    type: LOADING_USER,
   };
 }
 
@@ -33,19 +51,25 @@ function getUser(user) {
 
 export function loginUserAPI(data) {
   return async function (dispatch) {
-    const token = await axios.post(`${API_URL}/auth/login`, data);
-    const user = await axios.get(
-      `${API_URL}/users/${data.username}`,
-      token.data
-    );
+    try {
+      const token = await axios.post(`${API_URL}/auth/login`, data);
+      const user = await axios.get(
+        `${API_URL}/users/${data.username}`,
+        token.data
+      );
 
-    window.localStorage.setItem("_token", JSON.stringify(token.data.token));
-    window.localStorage.setItem(
-      "username",
-      JSON.stringify(user.data.user.username)
-    );
-    const response = { ...token.data, ...user.data.user };
-    return dispatch(loginUser(response));
+      window.localStorage.setItem("_token", JSON.stringify(token.data.token));
+      window.localStorage.setItem(
+        "username",
+        JSON.stringify(user.data.user.username)
+      );
+      const response = { ...token.data, ...user.data.user };
+      return dispatch(loginUser(response));
+    } catch (error) {
+      let data = error.response.data.message;
+      console.log(data);
+      throw data;
+    }
   };
 }
 
@@ -72,19 +96,34 @@ function signOutUser() {
 
 export function signUpUserAPI(data) {
   return async function (dispatch) {
-    const token = await axios.post(`${API_URL}/users`, data);
-    const user = await axios.get(
-      `${API_URL}/users/${data.username}`,
-      token.data
-    );
+    console.log("token pre");
+    try {
+      const token = await axios.post(`${API_URL}/users`, data);
+      const user = await axios.get(
+        `${API_URL}/users/${data.username}`,
+        token.data
+      );
+      console.log("user");
+      window.localStorage.setItem("_token", JSON.stringify(token.data.token));
+      window.localStorage.setItem(
+        "username",
+        JSON.stringify(user.data.user.username)
+      );
+      const response = { ...token.data, ...user.data.user };
+      return dispatch(signUpUser(response));
+    } catch (error) {
+      let data = error.response.data.message;
+      console.log(data);
+      throw data;
+      return dispatch(errorUser(data.message));
+    }
+  };
+}
 
-    window.localStorage.setItem("_token", JSON.stringify(token.data.token));
-    window.localStorage.setItem(
-      "username",
-      JSON.stringify(user.data.user.username)
-    );
-    const response = { ...token.data, ...user.data.user };
-    return dispatch(signUpUser(response));
+function errorUser(error) {
+  return {
+    type: ERROR_USER,
+    error,
   };
 }
 
@@ -100,8 +139,14 @@ export function updateUserAPI(data) {
   delete data.username;
 
   return async function (dispatch) {
-    const response = await axios.patch(`${API_URL}/users/${username}`, data);
-    return dispatch(updateUser(response.data.user));
+    try {
+      const response = await axios.patch(`${API_URL}/users/${username}`, data);
+      return dispatch(updateUser(response.data.user));
+    } catch (error) {
+      let data = error.response.data.message;
+      console.log(data);
+      throw data;
+    }
   };
 }
 

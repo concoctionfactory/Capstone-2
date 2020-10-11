@@ -7,6 +7,7 @@ import ListTaskForm from "./ListTaskForm";
 import BoardForm from "./BoardForm";
 import Demo from "./Demo";
 import NotFound from "./NotFound";
+import Loading from "./Loading";
 
 import Avatar from "@material-ui/core/Avatar";
 import { makeStyles } from "@material-ui/core/styles";
@@ -128,7 +129,13 @@ function Boards() {
   }
   let boardData = board || {};
 
-  if (!user.username) return <Demo />;
+  if (user === "loading") return <Loading />;
+  else if (!user.username) return <Demo />;
+  if (board === "loading") {
+    console.log("board");
+    return <Loading />;
+  }
+
   if (!board) return <NotFound />;
 
   if (board) {

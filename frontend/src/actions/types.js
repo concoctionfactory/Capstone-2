@@ -2,10 +2,12 @@ export const LOGIN = "LOGIN";
 export const SIGNOUT = "SIGNOUT";
 
 export const FETCH_ALL_MEMBERS = "FETCH_ALL_MEMBERS";
-
+export const LOADING_USER = "LOADING_USER";
+export const ERROR_USER = "ERROR_USER";
 export const FETCH_USER = "FETCH_USER";
 export const UPDATE_USER = "UPDATE_USER";
 
+export const LOADING_BOARD = "LOADING_BOARD";
 export const GET_BOARD = "FETCH_BOARD";
 export const ADD_BOARD = "ADD_BOARD";
 export const REMOVE_BOARD = "REMOVE_BOARD";

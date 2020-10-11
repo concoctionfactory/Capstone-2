@@ -12,6 +12,7 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import Loading from "./Loading";
 const useStyles = makeStyles((theme) => ({
   content: {
     display: "flex",
@@ -51,15 +52,14 @@ function Home() {
   };
   let userData = user || {};
 
-  if (!user.username) {
-    return <Demo />;
-  }
-
-  function getMembers() {
+  function getSummary() {
     let memberLen = 0;
+    let boardLen = 0;
 
     if (userData.boards) {
-      let members = Object.values(userData.boards).reduce(
+      let boards = Object.values(userData.boards);
+      boardLen = boards.length;
+      let members = boards.reduce(
         (acc, curr) => [...acc, ...curr.members.map((m) => m.username)],
         []
       );
@@ -69,50 +69,33 @@ function Home() {
     return (
       <React.Fragment>
         <Typography component="h2" variant="h6" color="primary" gutterBottom>
-          Members
+          Summary
         </Typography>
         <Typography component="p" variant="h4">
           {`${memberLen} members`}
+        </Typography>
+        <Typography component="p" variant="h4">
+          {`${boardLen} boards`}
         </Typography>
       </React.Fragment>
     );
   }
 
-  function getBoards() {
-    let boardLen = 0;
-    if (userData.boards) {
-      let boards = Object.values(userData.boards).map((b) => b.name);
-      boardLen = boards.length;
-    }
-    return (
-      <React.Fragment>
-        <Typography component="h2" variant="h6" color="primary" gutterBottom>
-          Boards
-        </Typography>
-        <Typography component="p" variant="h4">
-          {`${boardLen} boards`}
-        </Typography>
-        {/* {boards.map((board) => (
-          <Typography
-            color="textSecondary"
-            className={classes.depositContext}
-          >
-            {board}
-          </Typography>
-        ))} */}
-      </React.Fragment>
-    );
+  if (user === "loading") {
+    return <Loading />;
   }
+
+  if (!user.username) {
+    return <Demo />;
+  }
+
   return (
     <main className={classes.content}>
       <Container maxWidth="md" className={classes.container}>
         <Grid container spacing={3}>
           {/* Chart */}
           <Grid item xs={12} md={8} lg={9}>
-            <Paper className={fixedHeightPaper}>{getMembers()}</Paper>
-          </Grid>
-          <Grid item xs={12} md={4} lg={3}>
-            <Paper className={fixedHeightPaper}>{getBoards()}</Paper>
+            <Paper className={fixedHeightPaper}>{getSummary()}</Paper>
           </Grid>
         </Grid>
       </Container>

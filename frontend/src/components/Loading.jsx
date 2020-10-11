@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function NotFound() {
+function Loading() {
   const classes = useStyles();
   return (
     <main>
@@ -28,7 +28,7 @@ function NotFound() {
             color="textPrimary"
             gutterBottom
           >
-            Not Found
+            Loading
           </Typography>
           <Typography
             variant="h5"
@@ -36,7 +36,7 @@ function NotFound() {
             color="textSecondary"
             paragraph
           >
-            nothing found here
+            still loading
           </Typography>
         </Container>
       </div>
@@ -44,4 +44,4 @@ function NotFound() {
   );
 }
 
-export default NotFound;
+export default Loading;

@@ -5,10 +5,20 @@ import {
   REMOVE_BOARD,
   UPDATE_BOARD,
   SIGNOUT,
+  LOADING_USER,
+  ERROR_USER,
 } from "../actions/types";
 
 export default function rootReducer(state = {}, action) {
   switch (action.type) {
+    case ERROR_USER: {
+      console.log("ERROR");
+      return { error: action.error };
+    }
+    case LOADING_USER: {
+      console.log("LOADING");
+      return "loading";
+    }
     case LOGIN:
     case FETCH_USER: {
       let temp = action.user;
@@ -31,7 +41,7 @@ export default function rootReducer(state = {}, action) {
           user.boards[b.id] = board;
         });
       }
-      return { ...state, ...user };
+      return { ...user };
     }
     case SIGNOUT: {
       return {};

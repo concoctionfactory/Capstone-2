@@ -1,5 +1,6 @@
 import axios from "axios";
 import {
+  LOADING_BOARD,
   GET_BOARD,
   ADD_BOARD,
   REMOVE_BOARD,
@@ -17,11 +18,20 @@ const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
 export function getBoardAPI(id) {
   return async function (dispatch) {
     try {
+      dispatch(loadingBoard(id));
       const response = await axios.get(`${API_URL}/boards/${id}`);
       return dispatch(getBoard(response.data.board));
     } catch (error) {
+      console.log(error);
       return error;
     }
+  };
+}
+
+function loadingBoard(id) {
+  return {
+    type: LOADING_BOARD,
+    id,
   };
 }
 

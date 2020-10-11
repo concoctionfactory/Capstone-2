@@ -10,6 +10,7 @@ import TextField from "@material-ui/core/TextField";
 import Container from "@material-ui/core/Container";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
+import Alert from "@material-ui/lab/Alert";
 const useStyles = makeStyles((theme) => ({
   root: {
     maxWidth: 345,
@@ -98,8 +99,13 @@ function UserForm() {
     setFormErrors(errors);
 
     if (errors) return;
-    await dispatch(updateUserAPI(formData));
-    history.push("/");
+    try {
+      await dispatch(updateUserAPI(formData));
+      history.push("/");
+    } catch (error) {
+      setFormErrors({ error: error });
+      console.log("catch", error);
+    }
   }
 
   async function handleSignup(e) {
@@ -109,8 +115,18 @@ function UserForm() {
     setFormErrors(errors);
     console.log(errors);
     if (errors) return;
-    await dispatch(signUpUserAPI(formData));
-    history.push("/");
+
+    // await dispatch(signUpUserAPI(formData));
+    // console.log(user);
+    // if (!user.error) history.push("/");
+    try {
+      await dispatch(signUpUserAPI(formData));
+      console.log("user", user);
+      history.push("/");
+    } catch (error) {
+      setFormErrors({ error: error });
+      console.log("catch", error);
+    }
   }
   return (
     <Container component="main" maxWidth="xs">
@@ -120,6 +136,9 @@ function UserForm() {
           {user.username ? `Edit Profile ` : `Sign Up`}
         </Typography>
         <form className={classes.form} noValidate>
+          {formErrors && formErrors.error && (
+            <Alert severity="error">{formErrors.error}</Alert>
+          )}
           <TextField
             variant="outlined"
             margin="normal"

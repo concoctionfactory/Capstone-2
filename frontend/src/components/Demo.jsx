@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { NavLink as RouterLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { loginUserAPI } from "../actions/users";
@@ -30,9 +30,8 @@ function Demo() {
     e.preventDefault();
     await dispatch(loginUserAPI({ username: "alex_ant", password: "12345" }));
   }
-  const [text, setText] = useState("");
 
-  let main = (
+  return (
     <main>
       {/* Hero unit */}
       <div className={classes.heroContent}>
@@ -82,12 +81,6 @@ function Demo() {
       </div>
     </main>
   );
-
-  useEffect(() => {
-    const timer = setTimeout(() => setText(main), 200);
-    return () => clearTimeout(timer);
-  }, [main]);
-  return text;
 }
 
 export default Demo;

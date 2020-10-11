@@ -1,4 +1,5 @@
 import {
+  LOADING_BOARD,
   GET_BOARD,
   REMOVE_BOARD,
   UPDATE_BOARD,
@@ -12,6 +13,10 @@ import {
 
 export default function rootReducer(state = {}, action) {
   switch (action.type) {
+    case LOADING_BOARD: {
+      let id = action.id;
+      return { ...state, [id]: "loading" };
+    }
     case UPDATE_BOARD:
     case GET_BOARD: {
       let temp = action.board;
