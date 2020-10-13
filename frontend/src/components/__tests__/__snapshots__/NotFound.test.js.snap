@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <main>
+    <div
+      class="makeStyles-heroContent-3"
+    >
+      <div
+        class="MuiContainer-root MuiContainer-maxWidthSm"
+      >
+        <h1
+          class="MuiTypography-root MuiTypography-h2 MuiTypography-colorTextPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
+        >
+          Not Found
+        </h1>
+        <p
+          class="MuiTypography-root MuiTypography-h5 MuiTypography-colorTextSecondary MuiTypography-paragraph MuiTypography-alignCenter"
+        >
+          nothing found here
+        </p>
+      </div>
+    </div>
+  </main>
+</DocumentFragment>
+`;

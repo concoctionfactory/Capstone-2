@@ -72,6 +72,7 @@ function Boards() {
 
   const boardId = Number(useParams().boardId);
   const board = useSelector((state) => state.boards[boardId]);
+  console.log(user, boardId, board);
   const dispatch = useDispatch();
   useEffect(
     function loadPostWhenPostOrIdChanges() {

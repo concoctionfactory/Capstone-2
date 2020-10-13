@@ -53,7 +53,7 @@ function ListTaskForm({ isOpen, handleOpen, handleClose, boardId, listTask }) {
         aria-labelledby="form-dialog-title"
       >
         <DialogTitle id="form-dialog-title">
-          {listTask ? `Edit lisr` : `Create new list`}
+          {listTask ? `Edit list` : `Create new list`}
         </DialogTitle>
         <DialogContent>
           <TextField

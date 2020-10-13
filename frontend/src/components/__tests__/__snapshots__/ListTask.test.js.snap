@@ -1,0 +1,244 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="MuiPaper-root MuiCard-root makeStyles-root-9 MuiPaper-elevation1 MuiPaper-rounded"
+  >
+    <div
+      class="MuiCardHeader-root"
+    >
+      <div
+        class="MuiCardHeader-content"
+      >
+        <span
+          class="MuiTypography-root MuiCardHeader-title MuiTypography-h5 MuiTypography-displayBlock"
+        >
+          design
+        </span>
+      </div>
+      <div
+        class="MuiCardHeader-action"
+      >
+        <button
+          aria-haspopup="true"
+          aria-label="settings"
+          class="MuiButtonBase-root MuiIconButton-root"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+    <div
+      class="MuiCardContent-root"
+    >
+      <div
+        class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-1"
+      >
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+        >
+          <div
+            class="MuiPaper-root MuiCard-root makeStyles-card-16 MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiCardHeader-root"
+            >
+              <div
+                class="MuiCardHeader-content"
+              >
+                <span
+                  class="MuiTypography-root MuiTypography-gutterBottom"
+                >
+                  create wireframe
+                </span>
+                <h6
+                  class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary"
+                >
+                  use figma instead of sketch
+                </h6>
+              </div>
+              <div
+                class="MuiCardHeader-action"
+              >
+                <button
+                  aria-label="edit"
+                  class="MuiButtonBase-root MuiIconButton-root"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </div>
+            <div
+              class="MuiCardActions-root MuiCardActions-spacing"
+            >
+              <div
+                class="MuiChip-root MuiChip-sizeSmall"
+              >
+                <span
+                  class="MuiChip-label MuiChip-labelSmall"
+                >
+                  not_started
+                </span>
+              </div>
+              <div
+                class="MuiChip-root MuiChip-sizeSmall"
+              >
+                <span
+                  class="MuiChip-label MuiChip-labelSmall"
+                >
+                  Oct 1, 2020
+                </span>
+              </div>
+            </div>
+            <div />
+          </div>
+        </div>
+        <div
+          class="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-12"
+        >
+          <div
+            class="MuiPaper-root MuiCard-root makeStyles-card-16 MuiPaper-elevation1 MuiPaper-rounded"
+          >
+            <div
+              class="MuiCardHeader-root"
+            >
+              <div
+                class="MuiCardHeader-content"
+              >
+                <span
+                  class="MuiTypography-root MuiTypography-gutterBottom"
+                >
+                  mockup mobile
+                </span>
+                <h6
+                  class="MuiTypography-root MuiTypography-subtitle2 MuiTypography-colorTextSecondary"
+                >
+                  pass off using zeplin
+                </h6>
+              </div>
+              <div
+                class="MuiCardHeader-action"
+              >
+                <button
+                  aria-label="edit"
+                  class="MuiButtonBase-root MuiIconButton-root"
+                  tabindex="0"
+                  type="button"
+                >
+                  <span
+                    class="MuiIconButton-label"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      class="MuiSvgIcon-root"
+                      focusable="false"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                      />
+                    </svg>
+                  </span>
+                  <span
+                    class="MuiTouchRipple-root"
+                  />
+                </button>
+              </div>
+            </div>
+            <div
+              class="MuiCardActions-root MuiCardActions-spacing"
+            >
+              <div
+                class="MuiChip-root MuiChip-sizeSmall"
+              >
+                <span
+                  class="MuiChip-label MuiChip-labelSmall"
+                >
+                  in_progress
+                </span>
+              </div>
+              <div
+                class="MuiChip-root MuiChip-sizeSmall"
+              >
+                <span
+                  class="MuiChip-label MuiChip-labelSmall"
+                >
+                  Oct 6, 2020
+                </span>
+              </div>
+            </div>
+            <div />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="MuiCardActions-root"
+    >
+      <button
+        aria-label="add"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-add-14 MuiButton-containedPrimary"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <div />
+    <div />
+  </div>
+</DocumentFragment>
+`;

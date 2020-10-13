@@ -8,7 +8,8 @@ import {
   ERROR_USER,
 } from "./types";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+import { API_URL } from "../config";
+// const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
 
 export function getMembersApi() {
   return async function (dispatch) {
@@ -49,10 +50,11 @@ function getUser(user) {
   };
 }
 
-export function loginUserAPI(data) {
+export const loginUserAPI = (data) => {
   return async function (dispatch) {
     try {
       const token = await axios.post(`${API_URL}/auth/login`, data);
+
       const user = await axios.get(
         `${API_URL}/users/${data.username}`,
         token.data
@@ -67,13 +69,14 @@ export function loginUserAPI(data) {
       return dispatch(loginUser(response));
     } catch (error) {
       let data = error.response.data.message;
-      console.log(data);
+      // console.log("ERROR", data);
       throw data;
     }
   };
-}
+};
 
-function loginUser(user) {
+export function loginUser(user) {
+  // console.log(user);
   return {
     type: LOGIN,
     user,

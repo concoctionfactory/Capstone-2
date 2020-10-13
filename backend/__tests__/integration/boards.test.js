@@ -22,7 +22,7 @@ describe("POST /boards", function () {
     });
     expect(response.statusCode).toBe(201);
     expect(response.body.board).toHaveProperty("name");
-    expect(response.body.board.name).toBe("night");
+    expect(response.body.board.name).toBe("Night");
   });
 });
 

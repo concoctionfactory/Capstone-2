@@ -1,17 +1,18 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import Login from "../Login";
 import { Provider } from "react-redux";
-import { createStore } from "redux";
-import rootReducer from "../reducers/root";
+import { createStore, applyMiddleware } from "redux";
+import rootReducer from "../../reducers/root";
 import { BrowserRouter } from "react-router-dom";
-import BoardFrom from "./BoardForm";
-const store = createStore(rootReducer);
+import thunk from "redux-thunk";
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 it("renders without crashing", function () {
   render(
     <Provider store={store}>
       <BrowserRouter>
-        <BoardFrom isOpen={false} />
+        <Login />
       </BrowserRouter>
     </Provider>
   );
@@ -21,20 +22,21 @@ it("matches snapshot", function () {
   const { asFragment } = render(
     <Provider store={store}>
       <BrowserRouter>
-        <BoardFrom isOpen={false} />
+        <Login />
       </BrowserRouter>
     </Provider>
   );
   expect(asFragment()).toMatchSnapshot();
 });
 
-it("is open ", function () {
+it("shows text ", function () {
   const component = render(
     <Provider store={store}>
       <BrowserRouter>
-        <BoardFrom isOpen={true} />
+        <Login />
       </BrowserRouter>
     </Provider>
   );
-  expect(component.getByText("WorkFlow")).toBeInTheDocument();
+  expect(component.getByText("Login")).toBeInTheDocument();
+  expect(component.getByText("Signup")).toBeInTheDocument();
 });

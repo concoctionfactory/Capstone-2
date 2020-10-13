@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<DocumentFragment>
+  <main>
+    <div
+      class="makeStyles-heroContent-23"
+    >
+      <div
+        class="MuiContainer-root MuiContainer-maxWidthSm"
+      >
+        <h1
+          class="MuiTypography-root MuiTypography-h2 MuiTypography-colorTextPrimary MuiTypography-gutterBottom MuiTypography-alignCenter"
+        >
+          WorkFlow
+        </h1>
+        <p
+          class="MuiTypography-root MuiTypography-h5 MuiTypography-colorTextSecondary MuiTypography-paragraph MuiTypography-alignCenter"
+        >
+          Project management made simple, get your work in a flow. Get started by signing up or trying out the demo mode
+        </p>
+        <div
+          class="makeStyles-heroButtons-24"
+        >
+          <div
+            class="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2 MuiGrid-justify-xs-center"
+          >
+            <div
+              class="MuiGrid-root MuiGrid-item"
+            >
+              <a
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+                href="/login"
+                role="button"
+                tabindex="0"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  signup/ login
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </a>
+            </div>
+            <div
+              class="MuiGrid-root MuiGrid-item"
+            >
+              <button
+                class="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiButton-label"
+                >
+                  demo mode
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</DocumentFragment>
+`;

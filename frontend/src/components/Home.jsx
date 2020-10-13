@@ -36,6 +36,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 function Home() {
   const user = useSelector((state) => state.users);
+  // console.log("USER", user);
   const classes = useStyles();
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 

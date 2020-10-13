@@ -13,7 +13,7 @@ import {
   UPDATE_TASK,
 } from "./types";
 
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+import { API_URL } from "../config";
 
 export function getBoardAPI(id) {
   return async function (dispatch) {
