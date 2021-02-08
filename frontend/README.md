@@ -1,68 +1,55 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# WorkFlow
 
-## Available Scripts
+Workflow is a web based colaborative management tool. - https://gracious-kowalevski-54e405.netlify.app/
 
-In the project directory, you can run:
+- backend - https://work-flow-backend.herokuapp.com/
+- frontend - https://gracious-kowalevski-54e405.netlify.app/
 
-### `yarn start`
+## Features
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- adding/ removing/ editing (boards, list, cards)
+- members can added/removed from boards, only boards that are relevant to users are shown
+- when creating a board the creator is automatically selected
+- boards have a summary to the left, that show the completion of each list
+- cards have due date and progress state, to inidicate to users the state of the card
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Tests
 
-### `yarn test`
+    - backend - run tests by using "jest"
+    - frontend  - run tests by using "npm test"
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## UserFlow
 
-### `yarn build`
+> uers can try the site in demo mode by using demo mode or sign up and log in
+> users are then directed to the home page where all the boards can be seen, new boards can be added here, click on a board bring user to board page
+> users can new lists and cards on the board page
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+--backend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- [node.js] - evented I/O for the backend
+- [Express] - fast node.js network app framework
+- [psql] -open source object-relational database system
 
-### `yarn eject`
+--frontend
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- [ReactJS] - JavaScript library for building user interfaces
+  _[Redux]-Predictable State Container for JS Apps
+  _[Redux-thunk]-Thunk middleware for Redux.
+  _[joi-browser]-joi object schema validation bundled for the browser
+  _[Material-ui]- React UI framework.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Todos
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- adding the idea of teams
+- adding the idea of "activity", allowing users to see and track changes that have been made
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[node.js]: http://nodejs.org
+[express]: http://expressjs.com
+[psql]: https://www.postgresql.org/docs/9.3/app-psql.html
+[reactjs]: https://reactjs.org/
+[redux]: https://redux.js.org/
+[redux-thunk]: https://github.com/reduxjs/redux-thunk
+[joi-browser]: https://www.npmjs.com/package/joi-browser
+[material-ui]: https://material-ui.com/
