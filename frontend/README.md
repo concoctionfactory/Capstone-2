@@ -1,6 +1,6 @@
 # WorkFlow
 
-Workflow is a web based colaborative management tool. - https://gracious-kowalevski-54e405.netlify.app/
+Workflow is a web-based collaborative management tool. - https://gracious-kowalevski-54e405.netlify.app/
 
 - backend - https://work-flow-backend.herokuapp.com/
 - frontend - https://gracious-kowalevski-54e405.netlify.app/
@@ -8,10 +8,10 @@ Workflow is a web based colaborative management tool. - https://gracious-kowalev
 ## Features
 
 - adding/ removing/ editing (boards, list, cards)
-- members can added/removed from boards, only boards that are relevant to users are shown
+- members can be added/removed from boards, only boards that are relevant to users are shown
 - when creating a board the creator is automatically selected
 - boards have a summary to the left, that show the completion of each list
-- cards have due date and progress state, to inidicate to users the state of the card
+- cards have a due date and progress state, to indicate to users the state of the card
 
 ## Tests
 
@@ -20,8 +20,8 @@ Workflow is a web based colaborative management tool. - https://gracious-kowalev
 
 ## UserFlow
 
-> uers can try the site in demo mode by using demo mode or sign up and log in
-> users are then directed to the home page where all the boards can be seen, new boards can be added here, click on a board bring user to board page
+> users can try the site in demo mode by using demo mode or sign up and log in
+> users are then directed to the home page where all the boards can be seen, new boards can be added here, clicking on a board brings the user to the board page
 > users can new lists and cards on the board page
 
 ## Tech
